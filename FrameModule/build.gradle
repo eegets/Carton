@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion rootProject.ext.android['compileSdkVersion']
+    buildToolsVersion rootProject.ext.android['buildToolsVersion']
+    defaultConfig {
+        minSdkVersion rootProject.ext.android['minSdkVersion']
+        targetSdkVersion rootProject.ext.android['targetSdkVersion']
+        versionCode rootProject.ext.android['versionCode']
+        versionName rootProject.ext.android['versionName']
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["kotlin-stdlib"]
+    api rootProject.ext.dependencies["constraint-layout"]
+    api rootProject.ext.dependencies["gson"]
+    api rootProject.ext.dependencies["multidex"]
+    api rootProject.ext.dependencies["okhttp3"]
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["recycleView"]
+    api rootProject.ext.dependencies["photoView"]
+//    api rootProject.ext.dependencies["wechatsdk"]
+    api rootProject.ext.dependencies["eventBus"]
+    api rootProject.ext.dependencies["retrofit2Adater"]
+    api rootProject.ext.dependencies["retrofit2Gson"]
+    api rootProject.ext.dependencies["retrofit2"]
+    api rootProject.ext.dependencies["lifecycleExtensions"]
+    api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["glideTransformations"]
+    kapt rootProject.ext.dependencies["glide-compiler"]
+    api rootProject.ext.dependencies['mlink']
+    api files('libs/alipaySdk-20180601.jar')
+}
